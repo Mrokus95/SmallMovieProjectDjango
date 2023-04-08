@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from filmyweb.models import Film, AdditionalInfo, Grade
 from filmyweb.forms import MovieForm, AdditionalInfoForm, GradeForm
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
-
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import FormView
+from django.contrib.auth import login
+from .forms import CustomUserCreationForm
 
 # Create your views here.
 
@@ -148,3 +150,13 @@ def my_buttons(request):
         'buttons': buttons,
     }
     return render(request, 'my_template.html', context)
+
+class RegisterView(FormView):
+    template_name = 'registration/register.html'
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('all_movies')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return super().form_valid(form)

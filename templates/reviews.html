@@ -1,10 +1,26 @@
 {% extends 'main.html'%}
-
+{% load bootstrap %}
 {% block title %} Lista filmów {%endblock%}
 {% block page %}
 
+  <div class="card" style="width: 45rem; margin: 0 auto;">
+              <div class="card-body">
+              <form method="post" enctype="multipart/form-data">
+                  {%csrf_token%}
+                  {%if form_grade%}
+                    {{ form_grade|bootstrap }}
+                  {%endif%}
+                  <input class="btn btn-primary" type="submit" value="Dodaj komentarz">
+                <a href="{%url 'all_movies' %}" class="btn btn-primary">Anuluj</a>
+              </form>
 
-<table class="table">
+              </div>
+  </div>
+
+<hr>
+<h3>Komentarze innych użytkowaników portalu:</h3>
+
+<table class="review_table">
   <thead>
     <tr>
       <th scope="col">#</th>

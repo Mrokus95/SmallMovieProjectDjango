@@ -20,9 +20,13 @@
             <a href="{% url 'edit_movie' film.id %}" class="btn btn-primary" style="width: 6rem">
               <i class="fa-solid fa-pen-to-square"></i>
             </a>
+            <a href="{% url 'review_movie' film.id %}" class="btn btn-primary" style="width: 6rem">
+              <i class="fa-solid fa-comment-dots"></i>
+            </a>
             <a href="{% url 'delete_movie' film.id %}" class="btn btn-primary" style="width: 6rem; background-color: red;">
               <i class="fa-solid fa-trash-can"></i>
             </a>
+
           {% endif %}
         </div>
       </div>

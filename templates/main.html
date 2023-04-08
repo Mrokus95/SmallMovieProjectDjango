@@ -11,27 +11,32 @@
     <link rel="stylesheet" href="{% static 'new.css' %}">
     <title>{% block title %} {%endblock%}</title>
 </head>
+
 <body>
-  <div class="row">
-    <div class="col-6 text-left">
+<div class="row">
+  <div class="col-4 text-left scale-20">
     {% if user.is_authenticated %}
-     <b><h3>Witaj {{user.username}}!</h3></b>
-    {%else%}
-     <b>Witaj nieznajomy!</b>
-    {%endif%}
-    </div>
-<div class="col-6 d-flex justify-content-end button-container">
-    {% for button in buttons %}
-        <a href="{{ button.url }}" class="btn btn-primary" style="width: 8rem;">
-            {% if button.class %}
-                <i class="{{ button.class }}"></i>
-            {% endif %}
-        {{ button.text }}
-        </a>
-    {% endfor %}
-</div>
+      <b><h3>Witaj {{user.username}}!</h3></b>
+    {% else %}
+      <b>Witaj nieznajomy!</b>
+    {% endif %}
   </div>
- <hr>
+  <div class="col-2 text-center scale-60">
+      <a href="{%url 'all_movies' %}"><img src="https://www.mactrast.com/wp-content/uploads/2018/07/netflix-logo-banner-500x283.jpg" alt="Logo" class="mx-auto" style="max-height: 40px;"></a>
+  </div>
+  <div class="col-6 d-flex justify-content-end button-container scale-20p">
+    {% for button in buttons %}
+      <a href="{{ button.url }}" class="btn btn-primary" style="width: 8rem;">
+        {% if button.class %}
+          <i class="{{ button.class }}"></i>
+        {% endif %}
+        {{ button.text }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<hr>
 {% block page %} {%endblock%}
 </body>
 </html>
