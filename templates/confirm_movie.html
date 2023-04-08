@@ -1,0 +1,17 @@
+{% extends 'main.html'%}
+
+{% block title %} Usuń film {%endblock%}
+{% block page %}
+
+<div class="card" style="width: 45rem; margin: 0 auto;" xmlns="http://www.w3.org/1999/html">
+              <div class="card-body">
+                  <h5 class="card-title">Czy napewno chcesz usunąć film "{{movie.title}}"?</h5>
+              <form method="post" enctype="multipart/form-data">
+                  {%csrf_token%}
+                <button class="btn btn-danger" type="submit" style="background-color: red;"><i class="fa-solid fa-trash-can"></i></button>
+                <a href="{%url 'all_movies' %}" class="btn btn-primary">Anuluj</a>
+              </form>
+
+              </div>
+  </div>
+{% endblock %}

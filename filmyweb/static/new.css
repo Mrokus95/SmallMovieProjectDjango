@@ -1,0 +1,19 @@
+.button-container > a.btn + a.btn {
+  margin-left: 4px;
+}
+
+
+body {
+    padding: 2rem;
+      background-image: url('https://img.freepik.com/darmowe-zdjecie/szara-sciana-tekstur_24972-158.jpg?w=1380&t=st=1680897311~exp=1680897911~hmac=9d151802cd8ce9e84895eac88548e28e6b3e0b4fe20f94ac5d3c76603883bf4e');
+      background-size: cover;
+      background-position: center;
+    }
+
+h2{
+color:orange;
+}
+h1{
+color: black;
+
+}
