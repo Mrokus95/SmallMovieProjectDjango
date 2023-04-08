@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class AdditionalInfo(models.Model):
     MOVIE_TYPE = {
@@ -35,6 +36,7 @@ class Grade(models.Model):
     review = models.TextField(default="", blank=True)
     grade = models.PositiveSmallIntegerField(default=5)
     title = models.ForeignKey(Film, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Actor(models.Model):
     name = models.CharField(max_length=32)

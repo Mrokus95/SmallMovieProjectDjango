@@ -1,0 +1,27 @@
+{% extends 'main.html'%}
+
+{% block title %} Lista filmów {%endblock%}
+{% block page %}
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Użytkownik</th>
+      <th scope="col">Ocena</th>
+      <th scope="col">Komentarz</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {% for grade in grades %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ grade.user.username }}</td>
+      <td>{{ grade.grade }}</td>
+      <td>{{ grade.review }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{%endblock%}

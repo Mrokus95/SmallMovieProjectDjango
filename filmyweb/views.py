@@ -104,6 +104,27 @@ def delete_movie(request, id):
         return redirect(all_movies)
     return render(request, 'confirm_movie.html', {'movie': movie})
 
+@login_required()
+def review_movie(request, id):
+    movie = get_object_or_404(Film, pk=id)
+    grades = Grade.objects.filter(title=movie)
+
+    if request.method == 'POST':
+        form_grade = GradeForm(request.POST)
+        if form_grade.is_valid():
+            grade = form_grade.save(commit=False)
+            grade.title = movie
+            grade.user = request.user
+            grade.save()
+    else:
+        form_grade = GradeForm()
+
+    context = {
+        'form_grade': form_grade,
+        'grades': grades,
+        'movie': movie
+    }
+    return render(request, 'reviews.html', context)
 
 def my_buttons(request):
     buttons = []
