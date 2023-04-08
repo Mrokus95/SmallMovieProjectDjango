@@ -6,9 +6,18 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import FormView
 from django.contrib.auth import login
 from .forms import CustomUserCreationForm
-
+from rest_framework import viewsets
+from django.contrib.auth.models import User
+from .serializers import UserSerializer,FilmSerializer
 # Create your views here.
 
+class UserView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class FilmView(viewsets.ModelViewSet):
+    queryset = Film.objects.all()
+    serializer_class = FilmSerializer
 
 def all_movies(request):
     # return HttpResponse("<h1>To jest nasz pierwszy test</h1>")
